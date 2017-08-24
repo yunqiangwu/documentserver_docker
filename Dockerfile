@@ -5,8 +5,8 @@ RUN apt-get update
 RUN apt-get install -yq curl apt-transport-https ca-certificates
 RUN curl -sL https://deb.nodesource.com/setup_6.x |  bash
 RUN apt-get install -y nodejs
-RUN apt-get install npm
-RUN npm install -g npm cnpm
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
+RUN cnpm install -g npm
 RUN cnpm install -g grunt-cli
 RUN apt-get install --force-yes -yq \
     wget \
