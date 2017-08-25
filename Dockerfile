@@ -35,7 +35,8 @@ ENV WORKSPACE /workspace
 WORKDIR $WORKSPACE
 VOLUME $WORKSPACE
 
-RUN cd ${WORKSPACE} && git clone --recursive --depth=1 https://github.com/ONLYOFFICE/DocumentServer.git
+RUN cd ${WORKSPACE};\
+	git clone --recursive --depth=1 https://github.com/ONLYOFFICE/DocumentServer.git ${WORKSPACE}
 
 RUN ls -ll ${WORKSPACE}
 
