@@ -4,9 +4,9 @@ RUN apt-get update
 
 RUN apt-get install -yq curl apt-transport-https ca-certificates
 RUN curl -sL https://deb.nodesource.com/setup_6.x |  bash
-RUN apt-get install -y nodejs
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
-RUN cnpm install -g npm
+RUN apt-get install -y nodejs npm
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN npm install -g cnpm yarn --registry=https://registry.npm.taobao.org
 RUN cnpm install -g grunt-cli
 RUN apt-get install --force-yes -yq \
     wget \
@@ -28,19 +28,16 @@ RUN apt-get install --force-yes -yq \
     subversion
 
 
-ENV WORKSPACE /workspace
 
 
 
-WORKDIR $WORKSPACE
-VOLUME $WORKSPACE
+WORKDIR /workspace
 
-RUN cd ${WORKSPACE};\
-	git clone --recursive --depth=1 https://github.com/ONLYOFFICE/DocumentServer.git ${WORKSPACE}
+RUN	git clone --recursive --depth=1 https://github.com/ONLYOFFICE/DocumentServer.git /workspace
 
-RUN ls -ll ${WORKSPACE}
+RUN ls -ll /workspace
 
-# RUN cd ${WORKSPACE}/DocumentServer/core/Common/3dParty && ./make.sh
+# RUN cd /workspace/DocumentServer/core/Common/3dParty && ./make.sh
 
 
 
