@@ -35,9 +35,8 @@ WORKDIR /workspace
 
 RUN	git clone --recursive --depth=1 https://github.com/ONLYOFFICE/DocumentServer.git /workspace
 
-RUN ls -ll /workspace
 
-# RUN cd /workspace/DocumentServer/core/Common/3dParty && ./make.sh
+RUN cd /workspace/core/Common/3dParty && ./make.sh
 
 
 
